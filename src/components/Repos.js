@@ -50,9 +50,30 @@ const Repos = () => {
     })
     .slice(0, 5); //restricting the array ]to a length of 5
 
+  //stars,forks
+
+  let { stars, forks } = repos.reduce(
+    //Need to find 1.How many stars the repo has, 2.How many forks the repo has
+    //3.What is the name of that repo
+
+    (total, item) => {
+      const { stargazers_count, name, forks } = item;
+      total.stars[stargazers_count] = { label: name, value: stargazers_count };
+      total.forks[forks] = { label: name, value: forks };
+      return total;
+    },
+    {
+      stars: {},
+      forks: {},
+    }
+  );
+
+  stars = Object.values(stars).slice(-5).reverse(); //Slice -5 means get only last 5 values.
+  forks = Object.values(forks).slice(-5).reverse(); //reverse() is used to reverse the entire array
+
   //The chart data for fusion charts need to in the format of label and value
   // Sample chartdata for Fusion Charts
-  //  const chartdata = [
+  // const chartdata = [
   //   {
   //     label: "HTML",
   //     value: "13",
@@ -66,13 +87,15 @@ const Repos = () => {
   //     value: "60",
   //   },
   // ];
+
   return (
     <section className="section">
       <Wrapper className="section-center">
         {/* <ExampleChart data={chartdata} />; */}
         <Pie3D data={mostUsed} />
-        <div></div>
+        <Column3D data={stars} />
         <Doughnut2D data={mostPopular} />
+        <Bar3D data={forks} />
       </Wrapper>
     </section>
   );
