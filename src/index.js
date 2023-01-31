@@ -7,9 +7,18 @@ import { GithubProvider } from "./context/context";
 import { Auth0Provider } from "@auth0/auth0-react";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <GithubProvider>
-    <App />
-  </GithubProvider>
+  <React.StrictMode>
+    <Auth0Provider
+      domain="dev-oiaifw446yrjnwwv.us.auth0.com"
+      clientId="u71taghXzQ6hOdd5onpIYWyt46g6EZ38"
+      redirectUri={window.location.origin}
+      cacheLocation="localstorage"
+    >
+      <GithubProvider>
+        <App />
+      </GithubProvider>
+    </Auth0Provider>
+  </React.StrictMode>
 );
 
 // If you want your app to work offline and load faster, you can change
