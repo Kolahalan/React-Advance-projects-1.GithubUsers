@@ -4,7 +4,7 @@ import { GithubContext } from "../context/context";
 import { ExampleChart, Pie3D, Column3D, Bar3D, Doughnut2D } from "./Charts";
 const Repos = () => {
   const { repos } = React.useContext(GithubContext);
-  console.log(repos);
+  //console.log(repos);
 
   //We are using repos.reduce(()=>{callback func},{}) to iterate the repos array,
   //collect the data that we need and create a new array named 'languages' in our own sub fields
@@ -26,7 +26,7 @@ const Repos = () => {
 
     return total;
   }, {});
-  console.log(languages);
+  //console.log(languages);
 
   //Most used languages
   const mostUsed = Object.values(languages)

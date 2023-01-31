@@ -1,9 +1,10 @@
-import React from 'react';
-import { GithubContext } from '../context/context';
-import styled from 'styled-components';
-import { MdBusiness, MdLocationOn, MdLink } from 'react-icons/md';
+import React from "react";
+import { GithubContext } from "../context/context";
+import styled from "styled-components";
+import { MdBusiness, MdLocationOn, MdLink } from "react-icons/md";
 const Card = () => {
   const { githubUser } = React.useContext(GithubContext);
+  //console.log("Github user :", githubUser);
   const {
     avatar_url,
     html_url,
@@ -20,17 +21,17 @@ const Card = () => {
         <img src={avatar_url} alt={name} />
         <div>
           <h4>{name}</h4>
-          <p>@{twitter_username || 'john doe'}</p>
+          <p>@{twitter_username || "Not on twitter"}</p>
         </div>
         <a href={html_url}>follow</a>
       </header>
-      <p className='bio'>{bio}</p>
-      <div className='links'>
+      <p className="bio">{bio}</p>
+      <div className="links">
         <p>
           <MdBusiness></MdBusiness> {company}
         </p>
         <p>
-          <MdLocationOn></MdLocationOn> {location || 'earth'}
+          <MdLocationOn></MdLocationOn> {location || "earth"}
         </p>
         <a href={`https://${blog}`}>
           <MdLink></MdLink>
@@ -48,7 +49,7 @@ const Wrapper = styled.article`
   border-bottom-right-radius: var(--radius);
   position: relative;
   &::before {
-    content: 'user';
+    content: "user";
     position: absolute;
     top: 0;
     left: 0;
